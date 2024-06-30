@@ -3,7 +3,7 @@ namespace  App\stripe\createPrice;
 
 require_once('../vendor/autoload.php');
 
-$stripe = new \Stripe\StripeClient("sk_test_51PU9jRRu8yJrd6Ll7vTEfeTagbI0zJNTK6EsEreG2cukyyZaMmlsZx1b9Lkj10ozlbKQxCqul39TJqhzWMNLzLQy00FdJ9OqpX");
+$stripe = new \Stripe\StripeClient("your stripe key here");
 
 $product = $stripe->products->create([
   'name' => 'Starter Subscription',
