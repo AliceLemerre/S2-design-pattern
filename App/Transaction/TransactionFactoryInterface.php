@@ -1,8 +1,8 @@
 <?php
 
-namespace App\transaction;
+namespace App\Transaction;
 
-use App\stripe\StripeTransactionFactory;
+use App\Provider\Stripe\StripeTransactionFactory;
 
 interface TransactionFactoryInterface
 {
@@ -11,7 +11,7 @@ interface TransactionFactoryInterface
         string $description,
         string $currency,
         float $amount,
-        int $status,
+        string $status,
         string $interface,
     ): TransactionInterface;
 
@@ -20,11 +20,11 @@ interface TransactionFactoryInterface
         string $description,
         string $currency,
         float $amount,
-        int $status,
+        string $status,
         string $interface,
     ): StripeTransactionFactory;
 
-   /* public function createPaypalTransaction(
+   /* public function createPaypalTransaction( //à implémenter si paypal est utilisé
         string $id,
         string $description,
         string $currency,

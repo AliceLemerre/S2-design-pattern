@@ -1,8 +1,8 @@
 <?php
 
-namespace App\status;
+namespace App\Status;
 
-use App\transaction\transaction;
+use App\Transaction\Transaction;
 
 interface TransactionStatusInterface
 {

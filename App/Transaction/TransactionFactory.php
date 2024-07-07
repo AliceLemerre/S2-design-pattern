@@ -1,39 +1,41 @@
 <?php
 
-namespace App\transaction;
+namespace App\Transaction;
 
-use App\transaction\TransactionInterface;
-use App\tripe\StripeTransactionFactory;
+use App\Transaction\TransactionInterface;
+use App\Provider\Stripe\StripeTransactionFactory;
+use APP\Transaction\TransactionFactoryInterface;
+use App\Provider\Stripe\StripeTransaction;
+use App\Provider\Paypal\PaypalTransaction;
+
 
 use Error;
 
-abstract class TransactionFactory implements TransactionFactoryInterface //factory method
+abstract class TransactionFactory implements TransactionFactoryInterface 
 {
-    public function createTransaction(
+    public function createTransaction( 
         string $id,
         string $description,
         string $currency,
         float $amount,
-        int $status,
-        string $interface,
+        string $status,
+        string $provider,
 
         ): TransactionInterface {
-        return match ($interface) {
+        return match ($provider) {
             "stripe" => new StripeTransaction(
                 $id,
                 $description,
                 $currency,
                 $amount,
                 $status,
-                $interface,
             ),
-         /*   "paypal" => new PaypalTransaction(
+           /* "paypal" => new PaypalTransaction(
                 $id,
                 $description,
                 $currency,
                 $amount,
                 $status,
-                $interface,
             ), */
             default => throw new Error("Module de paiement non reconnu"),
         };

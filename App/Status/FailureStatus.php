@@ -1,9 +1,9 @@
 <?php
 
-namespace App\status;
+namespace App\Status;
 
-use App\transaction\transaction;
-use App\State\TransactionStatusInterface;
+use App\Transaction\Transaction;
+use App\Status\TransactionStatusInterface;
 
 
 class FailureStatus implements TransactionStatusInterface
